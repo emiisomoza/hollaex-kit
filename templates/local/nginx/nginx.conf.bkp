@@ -51,7 +51,7 @@ server {
       }
 
       location /v2/order {
-        #limit_req zone=api burst=10 nodelay;
+        limit_req zone=api burst=10 nodelay;
         limit_req_log_level info;
         limit_req_status 429;
 
@@ -59,7 +59,7 @@ server {
       }
 
       location / {
-        #limit_req zone=api burst=10 nodelay;
+        limit_req zone=api burst=10 nodelay;
         limit_req_log_level info;
         limit_req_status 429;
 
@@ -93,14 +93,7 @@ server {
         root /usr/share/nginx/html;
         internal;
       }
-    
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/api.devexchange.rewards4earth.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/api.devexchange.rewards4earth.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-}
+    }
 
 }
 
